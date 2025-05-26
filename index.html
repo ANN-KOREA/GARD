@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GARD 독립 실행형 운영 계획서. 생성형 AI와 인간의 병렬 협업을 통한 완전 자율형 자산 창출 및 삶 경영 시스템입니다.">
+  <meta name="author" content="안규환 (Ann Geu-hwan)">
+  <title>GARD: 독립 실행형 운영 계획서 | 안규환의 자율 성장 프레임워크</title>
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1f2937;
+      --accent-color: #facc15;
+      --text-color: #111827;
+      --text-light-color: #f9fafb;
+      --bg-color: #f3f4f6;
+      --surface-color: #ffffff;
+      --border-color: #e5e7eb;
+      --dark-bg-color: #1a202c;
+      --dark-surface-color: #2d3748;
+      --dark-text-color: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Roboto', 'Noto Sans KR', 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: var(--dark-bg-color);
+      color: var(--dark-text-color);
+    }
+
+    body.dark-mode article, body.dark-mode .cta-section {
+      background-color: var(--dark-surface-color);
+      border-color: #4a5568;
+    }
+
+    body.dark-mode th {
+      background-color: #2b6cb0;
+    }
+
+    body.dark-mode tr:nth-child(even) {
+      background-color: #2d3748;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+      color: var(--text-light-color);
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-bottom: 5px solid var(--accent-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header .subtitle {
+      font-size: 1.2rem;
+      color: var(--accent-color);
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    header .tagline {
+      font-size: 1rem;
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    nav {
+      background-color: var(--secondary-color);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0.5rem 1rem;
+    }
+
+    nav ul li a {
+      color: var(--text-light-color);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent-color);
+    }
+
+    main {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    article, section.cta-section {
+      background-color: var(--surface-color);
+      margin-bottom: 2.5rem;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      color: var(--secondary-color);
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      overflow-x: auto;
+      display: block;
+    }
+
+    caption {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: var(--primary-color);
+      caption-side: top;
+      text-align: left;
+      margin-bottom: 0.8em;
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 12px 15px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: var(--secondary-color);
+      color: var(--text-light-color);
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9fafb;
+    }
+
+    .highlight {
+      background-color: var(--accent-color);
+      color: var(--secondary-color);
+      padding: 0.3em 0.6em;
+      font-weight: bold;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .routine-loop {
+      background-color: #eef2ff;
+      border-left: 5px solid var(--primary-color);
+      padding: 1em 1.5em;
+      margin: 1.5em 0;
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      font-size: 0.95em;
+      border-radius: 6px;
+    }
+
+    .philosophy-list, .outcomes-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .philosophy-list li, .outcomes-list li {
+      background-color: #eef2ff;
+      padding: 0.8em 1.2em;
+      margin-bottom: 0.7em;
+      border-left: 4px solid var(--primary-color);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+    }
+
+    .philosophy-list li::before, .outcomes-list li::before {
+      font-size: 1.2em;
+      margin-right: 0.8em;
+      color: var(--primary-color);
+    }
+
+    .philosophy-list li::before { content: "💡"; }
+    .outcomes-list li::before { content: "🎯"; }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: var(--text-light-color);
+      text-align: center;
+      padding: 2.5rem;
+      border-radius: 12px;
+    }
+
+    .cta-section h2 {
+      color: var(--text-light-color);
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    .cta-section p {
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: var(--secondary-color);
+      padding: 0.8em 1.8em;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: transform 0.3s ease-out, background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta-button:hover, .cta-button:focus {
+      background-color: #eab308;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+
+    footer {
+      background: var(--secondary-color);
+      color: var(--text-light-color);
+      text-align: center;
+      padding: 2.5rem 1rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0.3em 0;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.8em;
+    }
+
+    .contact-info strong {
+      color: var(--secondary-color);
+    }
+
+    .contact-info a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .social-links a {
+      margin: 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--accent-color);
+      color: var(--secondary-color);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .dark-mode-toggle:hover {
+      background-color: #eab308;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      header .subtitle { font-size: 1rem; }
+      main { padding: 0.5rem; }
+      article, .cta-section { padding: 1.5rem; }
+      h2 { font-size: 1.6rem; }
+      table { font-size: 0.9rem; }
+      nav ul { flex-direction: column; }
+      nav ul li { margin: 0.3rem 0; }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 1.8rem; }
+      header .subtitle { font-size: 0.9rem; }
+      .cta-button { font-size: 1rem; padding: 0.6em 1.4em; }
+      table { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <button class="dark-mode-toggle" aria-label="다크 모드 토글">다크 모드</button>
+  <header>
+    <h1>GARD: 독립 실행형 운영 계획서</h1>
+    <p class="subtitle">안규환의 자율 성장 프레임워크</p>
+    <p class="tagline">“기술은 수단일 뿐, 인간의 질문과 실천이 본질이다.”</p>
+  </header>
+
+  <nav aria-label="주요 섹션 내비게이션">
+    <ul>
+      <li><a href="#gard-intro">GARD란?</a></li>
+      <li><a href="#system-structure">시스템 구조</a></li>
+      <li><a href="#execution-strategy">실행 전략</a></li>
+      <li><a href="#monetization">수익 창출</a></li>
+      <li><a href="#roadmap">로드맵</a></li>
+      <li><a href="#philosophy">철학</a></li>
+      <li><a href="#outcomes">성과</a></li>
+      <li><a href="#cta">참여</a></li>
+      <li><a href="#contact">문의</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <article id="gard-intro">
+      <h2>🚀 GARD란 무엇인가?: 핵심 원리와 비전</h2>
+      <p><strong>GARD</strong>는 <strong>‘Mental, Social, Knowledge, Intelligence’</strong> 네 가지 삶의 핵심 축을 기반으로, 인간의 주도성과 생성형 인공지능(AI)의 분석력을 병렬적으로 결합하여 <strong>지속 가능한 자산을 창출하고 삶을 주체적으로 경영</strong>하는 완전 자율형 시스템입니다. <em>(예: AI와의 협업으로 개인의 목표를 체계화하고 콘텐츠로 전환)</em></p>
+      <p>본 계획서는 외부의 재정적, 기술적 지원 없이도 GARD 시스템이 설계, 실천, 그리고 수익화까지 <strong>완전한 독립성을 가지고 운영될 수 있는 구체적인 방법론</strong>을 제시합니다. GARD는 단순한 도구가 아닌, 당신의 잠재력을 극대화하는 능동적인 성장 파트너입니다.</p>
+    </article>
+
+    <article id="system-structure">
+      <h2>⚙️ GARD 시스템 구조: 4가지 성장 엔진</h2>
+      <table>
+        <caption>GARD 시스템의 핵심 구성 요소와 기능</caption>
+        <thead><tr><th>영역 (Pillar)</th><th>핵심 정의</th><th>주요 실행 도구</th><th>기대 성과물</th></tr></thead>
+        <tbody>
+          <tr><td>🧠 <strong>Mental</strong> (정신)</td><td>삶의 방향성과 핵심 가치 명료화, 내적 동기 강화</td><td>Life Script™ (삶의 각본), 루틴 점검표, 회고록</td><td>정체성 리포트, 가치 선언문</td></tr>
+          <tr><td>🤝 <strong>Social</strong> (관계)</td><td>건강한 관계 설정 및 유지, 효과적인 경계 설정</td><td>역할 매트릭스, 감정 일지, 소통 패턴 분석</td><td>대화 재구성 기록, 관계 개선 전략</td></tr>
+          <tr><td>📚 <strong>Knowledge</strong> (지식)</td><td>질문 중심의 능동적 지식 탐색 및 창의적 연결</td><td>Question Logbook™ (질문 일지), Q-R-S-A 루프</td><td>콘텐츠 초안, 인사이트 카드, 지식 맵</td></tr>
+          <tr><td>💡 <strong>Intelligence</strong> (지능 확장)</td><td>AI와의 효과적인 병렬 협업을 통한 생산성 극대화</td><td>HandLoop™ (수동 자동화), AI Annotator (주석 도구)</td><td>고도화된 자산, 자동화된 프로세스</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article id="execution-strategy">
+      <h2>🔄 GARD 실행 전략: 일일 루틴과 성장 사이클</h2>
+      <p><strong>GARD의 핵심, 능동적 루틴 루프 구조:</strong></p>
+      <p class="routine-loop">자기 질문 🤔 → GPT와 심층 대화 💬 → HandLoop™로 핵심 복사/해석 ✍️ → 삶에 적극 반영 & 실행 ✨ → 성찰 리포트/콘텐츠 카드 생성 📄 → 안전한 로컬 저장 💾 → 이 모든 과정의 <span class="highlight">지속적 반복 및 개선</span></p>
+      
+      <h3>🗓️ 추천 루틴 시간표 (예시)</h3>
+      <table>
+        <caption>일일 GARD 실행 시간표 가이드</caption>
+        <thead><tr><th>시간대</th><th>루틴 활동</th><th>핵심 내용 및 목표</th></tr></thead>
+        <tbody>
+          <tr><td>오전 9시 (약 1시간)</td><td>🌅 GARD Setup & Visioning</td><td>오늘의 핵심 질문 정의, 목표 설정, Mental 영역 점검</td></tr>
+          <tr><td>오전 11시 (약 1.5시간)</td><td>🤖 GPT Co-creation</td><td>설정된 질문 기반 AI와 대화, 아이디어 생성 및 Knowledge 영역 확장</td></tr>
+          <tr><td>오후 1시 (약 1시간)</td><td>🔁 Loop & Annotate</td><td>HandLoop™ 활용, AI 대화 핵심 기록, 주석 추가 및 Intelligence 연마</td></tr>
+          <tr><td>오후 3시 (약 1.5시간)</td><td>🛠️ Assetization & Creation</td><td>수집된 정보 기반 콘텐츠 (글, 카드, 리포트) 제작, Social 영역 고려</td></tr>
+          <tr><td>오후 5시 (약 30분)</td><td>🧐 Self-Review & Planning</td><td>하루 실행 회고, 통찰 기록, 다음 날 계획 수립</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article id="monetization">
+      <h2>💰 자산화 및 수익 창출 전략</h2>
+      <table>
+        <caption>GARD를 통해 생성되는 자산과 수익화 모델</caption>
+        <thead><tr><th>생성 자산</th><th>구체적 생성 방식</th><th>수익화 및 활용 방안</th></tr></thead>
+        <tbody>
+          <tr><td>콘텐츠 카드/아티클</td><td>핵심 질문 + AI 응답 + 인간의 통찰 요약</td><td>SNS 공유, 블로그 게시, 뉴스레터, 미니북/전자책 출판</td></tr>
+          <tr><td>루틴 워크북/템플릿</td><td>GARD 실행 체크리스트 및 프레임워크 구조화</td><td>온라인 강의 교재, 유료 워크숍 자료, 실물 출판</td></tr>
+          <tr><td>GARD 실행 리포트</td><td>주기적 (일간/주간) 수기 해석 및 성과 정리</td><td>개인 성장 아카이브, 심층 분석 유료 콘텐츠, 컨설팅 자료</td></tr>
+          <tr><td>GARD 프랜차이즈 매뉴얼</td><td>GARD 시스템 전체 실행 방법론 체계화</td><td>1:1 코칭 프로그램, 그룹 교육 과정, 라이선스 제공</td></tr>
+          <tr><td>GARD 웹앱 MVP (초기 모델)</td><td>HTML/Notion 등 경량 도구 기반 설계 및 구현</td><td>개인화된 1인 코칭 플랫폼, 구독형 서비스 기반 마련</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article id="roadmap">
+      <h2>📈 독립 성장 로드맵: 단계별 발전 계획</h2>
+      <table>
+        <caption>GARD 시스템의 단계별 성장 및 확장 목표</caption>
+        <thead><tr><th>단계 (Phase)</th><th>핵심 실행 항목</th><th>달성 목표</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Phase 1:</strong><br>개인 루틴 정착</td><td>1인 GARD 시스템 완전 루틴화 및 습관 형성</td><td>GPT 협업 기반 일일/주간 루틴 안정적 정착</td></tr>
+          <tr><td><strong>Phase 2:</strong><br>콘텐츠 생산 및 배포</td><td>생성된 자산(콘텐츠) 외부 채널 통해 적극 배포</td><td>GARD 브랜드 인지도 구축 및 초기 팔로워 확보</td></tr>
+          <tr><td><strong>Phase 3:</strong><br>플랫폼 기반 구축</td><td>핵심 기능 중심의 웹앱 MVP 개발 및 테스트</td><td>자동화된 매뉴얼 운영 및 초기 사용자 피드백 확보</td></tr>
+          <tr><td><strong>Phase 4:</strong><br>커뮤니티 및 프랜차이즈</td><td>GARD 사용자 커뮤니티 활성화, 프랜차이즈 모델 확장</td><td>능동적 참가자 양성 및 다각화된 수익 모델 구축</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article id="philosophy">
+      <h2>🌟 GARD 실행 철학: 성공을 위한 핵심 원칙</h2>
+      <ul class="philosophy-list">
+        <li>AI는 강력한 <strong>거울이자 파트너</strong>이지, 주인이 아니다. 주체는 언제나 '나' 자신이다.</li>
+        <li>HandLoop™는 <strong>의식적인 수동 자동화</strong>의 정수이며, AI 결과물을 내재화하는 핵심 과정이다.</li>
+        <li>모든 가치 있는 자산은 <strong>날카로운 '질문'</strong>에서 시작된다. 질문의 질이 결과의 질을 결정한다.</li>
+        <li>데이터 주권 확보! <strong>로컬 저장 기반의 실행</strong>이 디지털 노마드 시대의 핵심 경쟁력이다.</li>
+        <li>외부의 평가나 즉각적인 보상 없이도, <strong>내재적 동기</strong>를 통해 지속적인 자가 성장이 가능하다.</li>
+      </ul>
+    </article>
+
+    <article id="outcomes">
+      <h2>📊 기대 성과: GARD를 통해 얻을 수 있는 것</h2>
+      <ul class="outcomes-list">
+        <li>주간 최소 3~5개 이상의 고품질 리포트 또는 유의미한 콘텐츠 자산 생성 (예: 블로그 포스트, 인사이트 카드)</li>
+        <li>하루 평균 4회 이상의 GARD 핵심 루틴 능동적 실행 및 기록 생활화 (예: 질문 로그, 회고 기록)</li>
+        <li>월 30~60개 이상의 깊이 있는 질문 축적 및 이를 통한 지적 자본 확장 (예: 창의적 문제 해결 프레임워크)</li>
+        <li>연간 100개 이상의 인사이트 카드/글 형태의 디지털 및 아날로그 콘텐츠 확보 (예: 전자책, 워크북)</li>
+        <li>실질적인 외부 판매 및 공유가 가능한 유형/무형의 콘텐츠 자산 제작 능력 함양 (예: 온라인 강의 자료)</li>
+      </ul>
+    </article>
+
+    <section id="cta" class="cta-section">
+      <h2>📣 당신도 GARD와 함께 성장하는 PROSUMER가 되세요!</h2>
+      <p>스스로 질문하고, AI와 협력하여 실천하고, 그 결과를 자산으로 만들어내는<br>
+      <strong>GARD 생태계의 능동적인 참여자이자 수익 창출의 주체</strong>가 될 수 있습니다.</p>
+      <p><a href="https://gard-community.example.com" class="cta-button" aria-label="GARD 커뮤니티 참여 안내 보기">지금 바로 GARD 여정 시작하기 ▶</a></p>
+    </section>
+
+    <article id="contact" class="contact-info">
+      <h2>📞 문의 및 추가 정보</h2>
+      <p><strong>운영자:</strong> 안규환 (Ann Geu-hwan)</p>
+      <p><strong>이메일:</strong> <a href="mailto:annlim60@hanmail.net">annlim60@hanmail.net</a></p>
+      <p><strong>전화:</strong> <a href="tel:010-2407-4356">010-2407-4356</a></p>
+      <p><strong>주소:</strong> 경기도 고양시 일산서구 가좌1로 10, 503동 804호</p>
+      <p><em>GARD 시스템에 대한 궁금한 점이나 협업 제안이 있다면 언제든지 편하게 연락주십시오.</em></p>
+    </article>
+  </main>
+
+  <footer>
+    <p>© <span id="currentYear"></span> GARD | Designed by Ann Geu-hwan & Enhanced by AI Collaboration.</p>
+    <p class="social-links">
+      <a href="https://twitter.com/gard_system" aria-label="GARD 트위터">𝕏</a> |
+      <a href="https://linkedin.com/company/gard-system" aria-label="GARD 링크드인">LinkedIn</a> |
+      <a href="https://github.com/gard-system" aria-label="GARD 깃허브">GitHub</a>
+    </p>
+    <p><a href="#">개인정보처리방침</a> | <a href="#">이용약관</a></p>
+  </footer>
+
+  <script>
+    // 현재 연도 설정
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // 다크 모드 토글
+    const toggleButton = document.querySelector('.dark-mode-toggle');
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggleButton.textContent = document.body.classList.contains('dark-mode') ? '라이트 모드' : '다크 모드';
+    });
+
+    // 부드러운 스크롤
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
