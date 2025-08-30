@@ -12,376 +12,150 @@
   <link rel="icon" type="image/png" href="/favicon.png">
   <title>GARD: 독립 실행형 운영 계획서 | 안규환의 자율 성장 프레임워크</title>
   <style>
-    :root {
-      --primary-color: #2563eb;
-      --secondary-color: #1f2937;
-      --accent-color: #facc15;
-      --text-color: #111827;
-      --text-light-color: #f9fafb;
-      --bg-color: #f3f4f6;
-      --surface-color: #ffffff;
-      --border-color: #e5e7eb;
-      --dark-bg-color: #1a202c;
-      --dark-surface-color: #2d3748;
-      --dark-text-color: #e2e8f0;
-    }
+  :root{
+    --primary-color:#2563eb;
+    --secondary-color:#1f2937;
+    --accent-color:#facc15;
+    --text-color:#111827;
+    --text-light-color:#f9fafb;
+    --bg-color:#f3f4f6;
+    --surface-color:#ffffff;
+    --border-color:#e5e7eb;
+    --dark-bg-color:#1a202c;
+    --dark-surface-color:#2d3748;
+    --dark-text-color:#e2e8f0;
+    /* 추가: 고정 내비 높이 변수 */
+    --nav-height:56px;
+  }
 
-    body {
-      font-family: 'Roboto', 'Noto Sans KR', 'Segoe UI', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-      line-height: 1.7;
-      transition: background-color 0.3s, color 0.3s;
-    }
+  html{scroll-behavior:smooth;}
 
-    body.dark-mode {
-      background-color: var(--dark-bg-color);
-      color: var(--dark-text-color);
-    }
+  body{
+    font-family:'Roboto','Noto Sans KR','Segoe UI',sans-serif;
+    background-color:var(--bg-color);
+    color:var(--text-color);
+    margin:0;padding:0;line-height:1.7;
+    transition:background-color .3s,color .3s;
+  }
+  body.dark-mode{background-color:var(--dark-bg-color);color:var(--dark-text-color);}
+  body.dark-mode article,body.dark-mode .cta-section{background-color:var(--dark-surface-color);border-color:#4a5568;}
+  body.dark-mode th{background-color:#2b6cb0;}
+  body.dark-mode tr:nth-child(even){background-color:#2d3748;}
 
-    body.dark-mode article, body.dark-mode .cta-section {
-      background-color: var(--dark-surface-color);
-      border-color: #4a5568;
-    }
+  /* 헤더: 고정 해제 + 컴팩트 */
+  header{
+    background:linear-gradient(135deg,var(--secondary-color) 0%,var(--primary-color) 100%);
+    color:var(--text-light-color);
+    text-align:center;
+    padding:1.25rem 1rem;           /* ↓ 기존 3rem → 1.25rem */
+    border-bottom:4px solid var(--accent-color);
+  }
+  header h1{font-size:2rem;margin:.1rem 0 .3rem;}
+  header .subtitle{font-size:1rem;color:var(--accent-color);font-weight:700;margin:.1rem 0;}
+  header .tagline{font-size:.95rem;font-style:italic;opacity:.9;margin:0;}
 
-    body.dark-mode th {
-      background-color: #2b6cb0;
-    }
+  /* 내비만 얇게 sticky */
+  nav{
+    background-color:var(--secondary-color);
+    position:sticky; top:0; z-index:999;
+    height:var(--nav-height);
+    display:flex; align-items:center;
+    padding:0 .75rem;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+  }
+  nav ul{
+    list-style:none;margin:0 auto; padding:0;
+    display:flex; justify-content:center; flex-wrap:wrap;
+    gap:.25rem .75rem;
+  }
+  nav ul li{margin:0;}
+  nav ul li a{
+    color:var(--text-light-color); text-decoration:none; font-weight:700;
+    padding:.35rem .5rem; border-radius:6px; display:inline-block;
+    transition:color .2s, background-color .2s;
+  }
+  nav ul li a:hover{color:var(--accent-color); background-color:rgba(255,255,255,.06);}
 
-    body.dark-mode tr:nth-child(even) {
-      background-color: #2d3748;
-    }
+  /* 앵커가 고정 내비에 가려지지 않도록 오프셋 */
+  section, article, [id]{scroll-margin-top:calc(var(--nav-height) + 12px);}
 
-    header {
-      background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-      color: var(--text-light-color);
-      text-align: center;
-      padding: 3rem 1.5rem;
-      border-bottom: 5px solid var(--accent-color);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+  main{max-width:960px;margin:2rem auto;padding:1rem;}
+  article, section.cta-section{
+    background-color:var(--surface-color);
+    margin-bottom:2.5rem; padding:2rem; border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08); border:1px solid var(--border-color);
+  }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
+  h2{font-size:1.8rem;color:var(--primary-color);margin:0 0 1.5rem;
+     padding-bottom:.5rem;border-bottom:2px solid var(--accent-color);}
+  h3{font-size:1.4rem;color:var(--secondary-color);margin:1.5rem 0 1rem;}
 
-    header .subtitle {
-      font-size: 1.2rem;
-      color: var(--accent-color);
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
+  table{width:100%; border-collapse:collapse; margin:1.5rem 0;
+        box-shadow:0 2px 4px rgba(0,0,0,.05); overflow-x:auto; display:block;}
+  caption{font-size:1.1em;font-weight:700;color:var(--primary-color);caption-side:top;text-align:left;margin-bottom:.8em;}
+  th,td{border:1px solid var(--border-color); padding:12px 15px; text-align:left; vertical-align:top;}
+  th{background-color:var(--secondary-color); color:var(--text-light-color); font-weight:700;}
+  tr:nth-child(even){background-color:#f9fafb;}
 
-    header .tagline {
-      font-size: 1rem;
-      font-style: italic;
-      opacity: 0.9;
-    }
+  .highlight{background-color:var(--accent-color); color:var(--secondary-color);
+             padding:.3em .6em; font-weight:700; border-radius:4px; display:inline-block;}
+  .routine-loop{background-color:#eef2ff; border-left:5px solid var(--primary-color);
+                padding:1em 1.5em; margin:1.5em 0; font-family:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,Courier,monospace;
+                font-size:.95em; border-radius:6px;}
+  .philosophy-list,.outcomes-list{list-style:none; padding-left:0;}
+  .philosophy-list li,.outcomes-list li{background-color:#eef2ff; padding:.8em 1.2em; margin-bottom:.7em;
+                border-left:4px solid var(--primary-color); border-radius:4px; display:flex; align-items:center;}
+  .philosophy-list li::before,.outcomes-list li::before{font-size:1.2em; margin-right:.8em; color:var(--primary-color);}
+  .philosophy-list li::before{content:"💡";} .outcomes-list li::before{content:"🎯";}
 
-    nav {
-      background-color: var(--secondary-color);
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
+  .cta-section{background:linear-gradient(135deg,var(--primary-color) 0%,var(--secondary-color) 100%);
+               color:var(--text-light-color); text-align:center; padding:2rem; border-radius:12px;}
+  .cta-section h2{color:var(--text-light-color); border-bottom:2px solid var(--accent-color);}
+  .cta-section p{font-size:1.15rem; margin-bottom:1.5rem;}
+  .cta-button{display:inline-block; background-color:var(--accent-color); color:var(--secondary-color);
+              padding:.8em 1.8em; font-size:1.05rem; font-weight:700; text-decoration:none; border-radius:8px;
+              transition:transform .3s, background-color .3s, box-shadow .3s;}
+  .cta-button:hover,.cta-button:focus{background-color:#eab308; transform:translateY(-3px); box-shadow:0 6px 12px rgba(0,0,0,.25);}
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; margin-top:2rem;}
+  .card{background:var(--surface-color); border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,.08); padding:1.5rem; transition:transform .3s;}
+  .card:hover{transform:translateY(-5px);}
 
-    nav ul li {
-      margin: 0.5rem 1rem;
-    }
+  .cta-form{display:flex; justify-content:center; gap:.5rem; margin-top:1rem;}
+  .cta-form input{padding:.8rem; border:1px solid var(--primary-color); border-radius:6px; font-size:1rem; max-width:250px;}
+  .cta-form button{background:var(--surface-color); color:var(--primary-color); padding:.8rem 1.2rem; border:none; border-radius:6px; font-weight:700; cursor:pointer; transition:background .3s;}
+  .cta-form button:hover{background:#eef4ff;}
+  .cta-form button:disabled{opacity:.6; cursor:not-allowed;}
 
-    nav ul li a {
-      color: var(--text-light-color);
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
+  footer{background:var(--secondary-color); color:var(--text-light-color); text-align:center; padding:2.5rem 1rem; margin-top:3rem; font-size:.9rem;}
+  footer p{margin:.3em 0;} footer a{color:var(--accent-color); text-decoration:none;} footer a:hover{text-decoration:underline;}
+  .contact-info p{margin-bottom:.8em;} .social-links a{margin:0 .5rem; font-size:1.2rem;}
 
-    nav ul li a:hover {
-      color: var(--accent-color);
-    }
+  .dark-mode-toggle{
+    position:fixed; top:.75rem; right:.75rem;
+    background-color:var(--accent-color); color:var(--secondary-color);
+    border:none; padding:.45rem .9rem; border-radius:8px; cursor:pointer; font-weight:700; z-index:1100;
+  }
+  .dark-mode-toggle:hover{background-color:#eab308;}
 
-    main {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-
-    article, section.cta-section {
-      background-color: var(--surface-color);
-      margin-bottom: 2.5rem;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      border: 1px solid var(--border-color);
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      color: var(--primary-color);
-      margin-top: 0;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--accent-color);
-    }
-
-    h3 {
-      font-size: 1.4rem;
-      color: var(--secondary-color);
-      margin-top: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      overflow-x: auto;
-      display: block;
-    }
-
-    caption {
-      font-size: 1.1em;
-      font-weight: bold;
-      color: var(--primary-color);
-      caption-side: top;
-      text-align: left;
-      margin-bottom: 0.8em;
-    }
-
-    th, td {
-      border: 1px solid var(--border-color);
-      padding: 12px 15px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    th {
-      background-color: var(--secondary-color);
-      color: var(--text-light-color);
-      font-weight: bold;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f9fafb;
-    }
-
-    .highlight {
-      background-color: var(--accent-color);
-      color: var(--secondary-color);
-      padding: 0.3em 0.6em;
-      font-weight: bold;
-      border-radius: 4px;
-      display: inline-block;
-    }
-
-    .routine-loop {
-      background-color: #eef2ff;
-      border-left: 5px solid var(--primary-color);
-      padding: 1em 1.5em;
-      margin: 1.5em 0;
-      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-      font-size: 0.95em;
-      border-radius: 6px;
-    }
-
-    .philosophy-list, .outcomes-list {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .philosophy-list li, .outcomes-list li {
-      background-color: #eef2ff;
-      padding: 0.8em 1.2em;
-      margin-bottom: 0.7em;
-      border-left: 4px solid var(--primary-color);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-    }
-
-    .philosophy-list li::before, .outcomes-list li::before {
-      font-size: 1.2em;
-      margin-right: 0.8em;
-      color: var(--primary-color);
-    }
-
-    .philosophy-list li::before { content: "💡"; }
-    .outcomes-list li::before { content: "🎯"; }
-
-    .cta-section {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: var(--text-light-color);
-      text-align: center;
-      padding: 2.5rem;
-      border-radius: 12px;
-    }
-
-    .cta-section h2 {
-      color: var(--text-light-color);
-      border-bottom: 2px solid var(--accent-color);
-    }
-
-    .cta-section p {
-      font-size: 1.15rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta-button {
-      display: inline-block;
-      background-color: var(--accent-color);
-      color: var(--secondary-color);
-      padding: 0.8em 1.8em;
-      font-size: 1.1rem;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: transform 0.3s ease-out, background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .cta-button:hover, .cta-button:focus {
-      background-color: #eab308;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      background: var(--surface-color);
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 1.5rem;
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .cta-form {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .cta-form input {
-      padding: 0.8rem;
-      border: 1px solid var(--primary-color);
-      border-radius: 6px;
-      font-size: 1rem;
-      max-width: 250px;
-    }
-
-    .cta-form button {
-      background: var(--surface-color);
-      color: var(--primary-color);
-      padding: 0.8rem 1.2rem;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .cta-form button:hover {
-      background: #eef4ff;
-    }
-
-    .cta-form button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    footer {
-      background: var(--secondary-color);
-      color: var(--text-light-color);
-      text-align: center;
-      padding: 2.5rem 1rem;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-    }
-
-    footer p {
-      margin: 0.3em 0;
-    }
-
-    footer a {
-      color: var(--accent-color);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    .contact-info p {
-      margin-bottom: 0.8em;
-    }
-
-    .social-links a {
-      margin: 0 0.5rem;
-      font-size: 1.2rem;
-    }
-
-    .dark-mode-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background-color: var(--accent-color);
-      color: var(--secondary-color);
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .dark-mode-toggle:hover {
-      background-color: #eab308;
-    }
-
-    @media (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      header .subtitle { font-size: 1rem; }
-      main { padding: 0.5rem; }
-      article, .cta-section { padding: 1.5rem; }
-      h2 { font-size: 1.6rem; }
-      table { font-size: 0.9rem; }
-      nav ul { flex-direction: column; }
-      nav ul li { margin: 0.3rem 0; }
-      .cta-form { flex-direction: column; align-items: center; }
-      .cta-form input, .cta-form button { width: 100%; max-width: 300px; }
-    }
-
-    @media (max-width: 480px) {
-      header h1 { font-size: 1.8rem; }
-      header .subtitle { font-size: 0.9rem; }
-      .cta-button { font-size: 1rem; padding: 0.6em 1.4em; }
-      table { font-size: 0.8rem; }
-    }
-  </style>
+  @media (max-width:768px){
+    header{padding:1rem .75rem;}
+    header h1{font-size:1.7rem;}
+    header .subtitle{font-size:.95rem;}
+    main{padding:.5rem;}
+    article,.cta-section{padding:1.25rem;}
+    h2{font-size:1.55rem;}
+    table{font-size:.9rem;}
+    nav{height:48px;} :root{--nav-height:48px;}
+    nav ul{flex-direction:row; gap:.25rem .5rem;}
+  }
+  @media (max-width:480px){
+    header h1{font-size:1.55rem;}
+    header .subtitle{font-size:.9rem;}
+    .cta-button{font-size:1rem; padding:.6em 1.4em;}
+    table{font-size:.8rem;}
+  }
+</style>
 </head>
 <body>
   <button class="dark-mode-toggle" aria-label="다크 모드 토글">다크 모드</button>
@@ -751,3 +525,4 @@
   </script>
 </body>
 </html>
+
